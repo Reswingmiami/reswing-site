@@ -117,7 +117,7 @@
   <div class="nav">
     <a href="index.html" class="brand">
       <div class="brand-mark"><img src="images/logo-header.png" alt="ReSwing Miami logo"></div>
-      <div class="brand-text">ReSwing<span>Miami Golf · Est. 2018</span></div>
+      <div class="brand-text">ReSwing<span>Miami Golf</span></div>
     </a>
     <nav class="links">
       <a href="shop.html">Shop</a>
@@ -146,7 +146,8 @@
     <button class="filter-chip" data-filter="wedges">Wedges</button>
     <button class="filter-chip" data-filter="putters">Putters</button>
     <button class="filter-chip" data-filter="bags">Bags</button>
-    <button class="filter-chip" data-filter="accessories">Balls &amp; Grips</button>
+    <button class="filter-chip" data-filter="balls">Balls</button>
+    <button class="filter-chip" data-filter="grips">Grips</button>
     <span class="results-count" id="resultsCount">12 items</span>
   </div>
 
@@ -233,12 +234,21 @@
       </div>
     </div>
 
-    <div class="card" data-cat="accessories">
+    <div class="card" data-cat="grips">
       <div class="card-img"><span class="card-condition new">New</span>PRODUCT PHOTO</div>
       <div class="card-body">
         <div class="card-brand">Golf Pride</div>
         <div class="card-name">Grip Set (x13)</div>
         <div class="card-footer"><span class="card-price">$20</span><a href="product.html" class="card-btn">View</a></div>
+      </div>
+    </div>
+
+    <div class="card" data-cat="balls">
+      <div class="card-img"><span class="card-condition new">New</span>PRODUCT PHOTO</div>
+      <div class="card-body">
+        <div class="card-brand">Titleist</div>
+        <div class="card-name">Pro V1 (Dozen)</div>
+        <div class="card-footer"><span class="card-price">$35</span><a href="product.html" class="card-btn">View</a></div>
       </div>
     </div>
 
@@ -312,7 +322,11 @@
       chips.forEach(c => c.classList.remove('active'));
       match.classList.add('active');
       applyFilter(initialCat);
+    } else {
+      applyFilter('all');
     }
+  } else {
+    applyFilter('all');
   }
 </script>
 
