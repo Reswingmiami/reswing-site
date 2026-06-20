@@ -10,14 +10,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --green-deep:#0B3D2E;
-    --green-mid:#16553F;
-    --cream:#F5F1E8;
-    --gold:#C9A227;
-    --ink:#1A1A1A;
-    --sand:#E8E2D4;
-    --sage:#8A9A8E;
-    --line: rgba(11,61,46,0.16);
+    --green-deep:#102A43;
+    --green-mid:#1B3A63;
+    --cream:#FFFFFF;
+    --gold:#3D7DC9;
+    --ink:#13202E;
+    --sand:#EEF3F9;
+    --sage:#7C8CA0;
+    --line: rgba(16,42,67,0.12);
     --radius: 2px;
   }
   *{box-sizing:border-box;}
@@ -119,19 +119,19 @@
   .btn-primary{background:var(--green-deep);color:var(--cream);}
   .btn-primary:hover{background:var(--green-mid);}
   .btn-ghost{background:transparent;color:var(--green-deep);}
-  .btn-ghost:hover{background:rgba(11,61,46,0.06);}
+  .btn-ghost:hover{background:rgba(16,42,67,0.06);}
 
   .hero-photo{
     position:relative;
     aspect-ratio:4/5;
     border-radius:var(--radius);
     overflow:hidden;
-    background:linear-gradient(160deg,#16553F, #0B3D2E 60%);
+    background:linear-gradient(160deg,#1B3A63, #102A43 60%);
   }
   .hero-photo img{width:100%;height:100%;object-fit:cover;mix-blend-mode:luminosity;opacity:0.85;}
   .hero-photo-tag{
     position:absolute;bottom:18px;left:18px;right:18px;
-    background:rgba(245,241,232,0.95);
+    background:rgba(255,255,255,0.95);
     padding:14px 16px;border-radius:var(--radius);
     display:flex;justify-content:space-between;align-items:center;
   }
@@ -151,36 +151,36 @@
     background:var(--green-deep);
     border-radius:6px;
     overflow:hidden;
-    box-shadow:0 24px 60px -20px rgba(11,61,46,0.45);
+    box-shadow:0 24px 60px -20px rgba(16,42,67,0.35);
   }
   .scorecard-header{
     display:grid;grid-template-columns:64px 1.4fr 1fr 1fr 56px;
     padding:18px 28px;
     font-family:'JetBrains Mono',monospace;
     font-size:11px;letter-spacing:1.5px;text-transform:uppercase;
-    color:rgba(245,241,232,0.55);
-    border-bottom:1px solid rgba(245,241,232,0.14);
+    color:rgba(255,255,255,0.55);
+    border-bottom:1px solid rgba(255,255,255,0.14);
   }
   .scorecard-row{
     display:grid;grid-template-columns:64px 1.4fr 1fr 1fr 56px;
     align-items:center;
     padding:20px 28px;
-    border-bottom:1px solid rgba(245,241,232,0.08);
+    border-bottom:1px solid rgba(255,255,255,0.08);
     color:var(--cream);
     transition:background .2s ease;
     cursor:pointer;
   }
   .scorecard-row:last-child{border-bottom:none;}
-  .scorecard-row:hover{background:rgba(245,241,232,0.06);}
+  .scorecard-row:hover{background:rgba(255,255,255,0.06);}
   .hole-num{
     font-family:'JetBrains Mono',monospace;font-weight:700;font-size:14px;color:var(--gold);
   }
   .hole-cat{font-family:'Fraunces',serif;font-weight:600;font-size:18px;}
   .hole-cat small{
     display:block;font-family:'Inter',sans-serif;font-weight:400;font-size:12.5px;
-    color:rgba(245,241,232,0.55);margin-top:2px;letter-spacing:0.2px;
+    color:rgba(255,255,255,0.55);margin-top:2px;letter-spacing:0.2px;
   }
-  .hole-count{font-size:13.5px;color:rgba(245,241,232,0.7);}
+  .hole-count{font-size:13.5px;color:rgba(255,255,255,0.7);}
   .hole-price{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:15px;color:var(--cream);}
   .hole-arrow{text-align:right;color:var(--gold);font-size:18px;}
 
@@ -194,11 +194,11 @@
     border:1px solid var(--line);
     transition:transform .25s ease, box-shadow .25s ease;
   }
-  .card:hover{transform:translateY(-4px);box-shadow:0 18px 34px -16px rgba(11,61,46,0.28);}
+  .card:hover{transform:translateY(-4px);box-shadow:0 18px 34px -16px rgba(16,42,67,0.22);}
   .card-img{
-    aspect-ratio:1/1;background:linear-gradient(145deg,#dcd5c2,#cfc6ad);
+    aspect-ratio:1/1;background:linear-gradient(145deg,#E4ECF6,#D2DEEC);
     display:flex;align-items:center;justify-content:center;
-    color:rgba(11,61,46,0.25);font-size:13px;font-family:'JetBrains Mono',monospace;
+    color:rgba(16,42,67,0.25);font-size:13px;font-family:'JetBrains Mono',monospace;
     position:relative;
   }
   .card-condition{
@@ -247,15 +247,15 @@
     font-family:'Fraunces',serif;font-weight:600;font-size:clamp(1.8rem,3vw,2.4rem);
     margin:0 0 18px;
   }
-  .visit-section p{color:rgba(245,241,232,0.75);line-height:1.65;font-size:15.5px;max-width:420px;}
+  .visit-section p{color:rgba(255,255,255,0.75);line-height:1.65;font-size:15.5px;max-width:420px;}
   .contact-list{list-style:none;padding:0;margin:28px 0 0;display:flex;flex-direction:column;gap:16px;}
   .contact-list li{display:flex;gap:14px;align-items:flex-start;font-size:14.5px;}
   .contact-list .label{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--gold);letter-spacing:1px;text-transform:uppercase;width:80px;flex-shrink:0;padding-top:2px;}
   .map-box{
-    background:rgba(245,241,232,0.06);border:1px solid rgba(245,241,232,0.15);
+    background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);
     border-radius:4px;aspect-ratio:5/4;
     display:flex;align-items:center;justify-content:center;
-    font-family:'JetBrains Mono',monospace;font-size:13px;color:rgba(245,241,232,0.4);
+    font-family:'JetBrains Mono',monospace;font-size:13px;color:rgba(255,255,255,0.4);
   }
 
   /* ---------- Footer ---------- */
@@ -498,7 +498,7 @@
       </ul>
       <div class="hero-actions" style="margin-top:32px;">
         <a href="#" class="btn" style="background:var(--gold);border-color:var(--gold);color:var(--green-deep);">Message on Facebook</a>
-        <a href="tel:+13055550142" class="btn btn-ghost" style="border-color:rgba(245,241,232,0.4);color:var(--cream);">Call now</a>
+        <a href="tel:+13055550142" class="btn btn-ghost" style="border-color:rgba(255,255,255,0.4);color:var(--cream);">Call now</a>
       </div>
     </div>
     <div class="map-box">MAP — MIAMI, FL</div>
