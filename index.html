@@ -143,15 +143,6 @@
     color:rgba(255,255,255,0.45);
     font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:1px;
   }
-  .carousel-tag{
-    position:absolute;bottom:18px;left:18px;right:18px;
-    background:rgba(255,255,255,0.95);
-    padding:14px 16px;border-radius:var(--radius);
-    display:flex;justify-content:space-between;align-items:center;
-    z-index:5;
-  }
-  .carousel-tag .name{font-family:'Fraunces',serif;font-weight:600;font-size:15px;color:var(--green-deep);}
-  .carousel-tag .price{font-family:'JetBrains Mono',monospace;font-weight:700;color:var(--gold);font-size:15px;}
   .carousel-dots{
     position:absolute;top:18px;right:18px;
     display:flex;gap:6px;z-index:5;
@@ -336,26 +327,22 @@
       </div>
     </div>
     <div class="hero-carousel" id="heroCarousel">
-      <div class="carousel-slide active" data-brand="TaylorMade" data-item="Stealth Driver" data-price="$280">
-        <div class="carousel-placeholder">PRODUCT PHOTO</div>
+      <div class="carousel-slide active">
+        <div class="carousel-placeholder">COURSE / LIFESTYLE PHOTO</div>
       </div>
-      <div class="carousel-slide" data-brand="Titleist" data-item="T100 Irons" data-price="$400">
-        <div class="carousel-placeholder">PRODUCT PHOTO</div>
+      <div class="carousel-slide">
+        <div class="carousel-placeholder">DRIVER HEADCOVERS PHOTO</div>
       </div>
-      <div class="carousel-slide" data-brand="Callaway" data-item="Opus SP 50° Wedge" data-price="$90">
-        <img src="images/products/final-2.jpg" alt="Callaway Opus SP 50 degree wedge" style="width:100%;height:100%;object-fit:cover;">
+      <div class="carousel-slide">
+        <img src="images/products/final-2.jpg" alt="Callaway Opus SP 50 degree wedge on the club wall" style="width:100%;height:100%;object-fit:cover;">
       </div>
-      <div class="carousel-slide" data-brand="Ping" data-item="G430 Driver" data-price="$300">
-        <div class="carousel-placeholder">PRODUCT PHOTO</div>
+      <div class="carousel-slide">
+        <div class="carousel-placeholder">CLUB WALL PHOTO</div>
       </div>
-      <div class="carousel-slide" data-brand="Odyssey" data-item="Mallet Putter" data-price="$150">
-        <div class="carousel-placeholder">PRODUCT PHOTO</div>
+      <div class="carousel-slide">
+        <div class="carousel-placeholder">SHOP / INVENTORY PHOTO</div>
       </div>
 
-      <div class="carousel-tag">
-        <span class="name" id="carouselName">TaylorMade Stealth Driver</span>
-        <span class="price" id="carouselPrice">$280</span>
-      </div>
       <div class="carousel-dots" id="carouselDots"></div>
     </div>
   </div>
@@ -450,7 +437,7 @@
 <section class="visit-section" id="visit">
   <div class="wrap visit-grid">
     <div>
-      <h2>Come hit a few.<br>Or just ask first.</h2>
+      <h2>Are you in Miami<br>and want to see our inventory? Contact me.</h2>
       <p>Every club is hand-inspected before it goes on the rack. We carry clubs for every level of play, from first-timers to scratch golfers, all fairly priced and ready to perform. If you want exact loft, lie, shaft flex, or swing weight before you buy, just ask and we'll get specific.</p>
       <ul class="contact-list">
         <li><span class="label">Call</span> <a href="tel:+17862386733">(786) 238-6733</a></li>
@@ -494,8 +481,6 @@
 <script>
   (function(){
     const slides = document.querySelectorAll('#heroCarousel .carousel-slide');
-    const nameEl = document.getElementById('carouselName');
-    const priceEl = document.getElementById('carouselPrice');
     const dotsWrap = document.getElementById('carouselDots');
     let current = 0;
     let timer;
@@ -508,19 +493,12 @@
     });
     const dots = dotsWrap.querySelectorAll('.dot');
 
-    function updateTag(i){
-      const slide = slides[i];
-      nameEl.textContent = slide.dataset.brand + ' ' + slide.dataset.item;
-      priceEl.textContent = slide.dataset.price;
-    }
-
     function goTo(i){
       slides[current].classList.remove('active');
       dots[current].classList.remove('active');
       current = i;
       slides[current].classList.add('active');
       dots[current].classList.add('active');
-      updateTag(current);
       resetTimer();
     }
 
@@ -533,7 +511,6 @@
       timer = setInterval(next, 3500);
     }
 
-    updateTag(0);
     resetTimer();
   })();
 </script>
