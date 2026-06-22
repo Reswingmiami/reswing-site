@@ -10,323 +10,298 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --green-deep:#102A43;
-    --green-mid:#1B3A63;
-    --cream:#FFFFFF;
-    --gold:#3D7DC9;
-    --ink:#13202E;
-    --sand:#EEF3F9;
-    --sage:#7C8CA0;
-    --line: rgba(16,42,67,0.12);
-    --radius: 2px;
-  }
-  *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{
-    margin:0;
-    background:var(--cream);
-    color:var(--ink);
-    font-family:'Inter',sans-serif;
-    -webkit-font-smoothing:antialiased;
-  }
-  a{color:inherit;text-decoration:none;}
-  img{max-width:100%;display:block;}
-
-  .wrap{max-width:1180px;margin:0 auto;padding:0 28px;}
-
-  /* ---------- Header ---------- */
-  header{
-    position:sticky;top:0;z-index:50;
-    background:var(--cream);
-    border-bottom:1px solid var(--line);
-  }
-  .nav{
-    display:flex;align-items:center;justify-content:space-between;
-    padding:18px 28px;
-    max-width:1180px;margin:0 auto;
-  }
-  .brand{display:flex;align-items:center;gap:12px;}
-  .brand-mark{
-    width:42px;height:42px;border-radius:50%;
-    overflow:hidden;flex-shrink:0;
-    border:1.5px solid var(--gold);
-  }
-  .brand-mark img{width:100%;height:100%;object-fit:cover;display:block;}
-  .brand-text{font-family:'Fraunces',serif;font-weight:600;font-size:19px;letter-spacing:0.2px;}
-  .brand-text span{color:var(--green-mid);font-weight:500;font-size:13px;display:block;letter-spacing:1.5px;text-transform:uppercase;margin-top:-2px;}
-
-  nav.links{display:flex;gap:34px;align-items:center;}
-  nav.links a{
-    font-size:14px;font-weight:500;color:var(--green-deep);
-    position:relative;padding-bottom:4px;
-  }
-  nav.links a::after{
-    content:'';position:absolute;left:0;bottom:0;width:0;height:1.5px;background:var(--gold);
-    transition:width .25s ease;
-  }
-  nav.links a:hover::after{width:100%;}
-  nav.links a.current::after{width:100%;}
-
-  .nav-cta{
-    background:var(--green-deep);color:var(--cream);
-    padding:10px 20px;border-radius:var(--radius);
-    font-size:13.5px;font-weight:600;letter-spacing:0.3px;
-    border:1px solid var(--green-deep);
-  }
-  .nav-cta:hover{background:var(--green-mid);}
-  .menu-btn{display:none;background:none;border:none;cursor:pointer;color:var(--green-deep);}
-
-  /* ---------- Page hero ---------- */
-  .page-hero{padding:64px 0 56px;}
-  .eyebrow{
-    font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;
-    color:var(--gold);letter-spacing:2px;text-transform:uppercase;
-    margin-bottom:18px;
-  }
-  h1{
-    font-family:'Fraunces',serif;font-weight:600;
-    font-size:clamp(2.2rem, 4vw, 3.2rem);
-    line-height:1.05;letter-spacing:-0.5px;
-    margin:0 0 20px;color:var(--green-deep);
-  }
-  h1 em{font-style:italic;font-weight:500;color:var(--gold);}
-  .page-hero p.lede{font-size:17px;line-height:1.65;color:#3a423d;max-width:600px;margin:0;}
-
-  /* ---------- How it works ---------- */
-  .steps-section{padding:20px 0 70px;}
-  .steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;}
-  .step-card{
-    background:var(--sand);border:1px solid var(--line);border-radius:6px;
-    padding:30px 26px;
-  }
-  .step-num{
-    font-family:'JetBrains Mono',monospace;font-weight:700;font-size:13px;
-    color:var(--gold);letter-spacing:1px;margin-bottom:14px;
-  }
-  .step-card h3{
-    font-family:'Fraunces',serif;font-weight:600;font-size:19px;
-    margin:0 0 10px;color:var(--green-deep);
-  }
-  .step-card p{font-size:14.5px;line-height:1.55;color:#3a423d;margin:0;}
-
-  /* ---------- Submission section ---------- */
-  .submit-section{background:var(--green-deep);color:var(--cream);padding:80px 0;}
-  .submit-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;}
-  .submit-section h2{
-    font-family:'Fraunces',serif;font-weight:600;font-size:clamp(1.8rem,3vw,2.4rem);
-    margin:0 0 18px;
-  }
-  .submit-section p{color:rgba(255,255,255,0.75);line-height:1.65;font-size:15.5px;max-width:440px;}
-
-  .info-list{list-style:none;padding:0;margin:28px 0 0;display:flex;flex-direction:column;gap:14px;}
-  .info-list li{display:flex;gap:10px;align-items:flex-start;font-size:14.5px;color:rgba(255,255,255,0.85);}
-  .info-list li::before{content:'✓';color:var(--gold);font-weight:700;flex-shrink:0;}
-
-  .submit-card{
-    background:var(--cream);color:var(--ink);
-    border-radius:6px;padding:36px 32px;
-  }
-  .submit-card h3{
-    font-family:'Fraunces',serif;font-weight:600;font-size:21px;
-    margin:0 0 8px;color:var(--green-deep);
-  }
-  .submit-card p.sub{font-size:14px;color:var(--sage);margin:0 0 26px;line-height:1.5;}
-
-  .field-group{margin-bottom:18px;}
-  .field-group label{
-    display:block;font-family:'JetBrains Mono',monospace;font-size:11px;
-    letter-spacing:1px;text-transform:uppercase;color:var(--sage);margin-bottom:6px;
-  }
-  .field-group input, .field-group textarea{
-    width:100%;padding:11px 13px;border:1px solid var(--line);border-radius:3px;
-    font-family:'Inter',sans-serif;font-size:14.5px;color:var(--ink);
-    background:var(--sand);
-  }
-  .field-group input:focus, .field-group textarea:focus{
-    outline:2px solid var(--gold);outline-offset:1px;background:var(--cream);
-  }
-  .field-group textarea{resize:vertical;min-height:80px;}
-
-  .submit-actions{display:flex;flex-direction:column;gap:12px;margin-top:24px;}
-  .btn{
-    display:flex;align-items:center;justify-content:center;gap:9px;
-    padding:15px 26px;border-radius:var(--radius);
-    font-size:14.5px;font-weight:600;letter-spacing:0.2px;
-    border:1.5px solid var(--green-deep);cursor:pointer;width:100%;
-  }
-  .btn-primary{background:var(--green-deep);color:var(--cream);}
-  .btn-primary:hover{background:var(--green-mid);}
-  .btn-gold{background:var(--gold);border-color:var(--gold);color:var(--cream);}
-  .btn-gold:hover{background:#2F66A3;}
-
-  .attach-note{
-    display:flex;gap:10px;align-items:flex-start;margin-top:20px;
-    padding:14px;background:var(--sand);border-radius:4px;
-    font-size:12.5px;color:var(--green-deep);line-height:1.5;
-  }
-
-  /* ---------- Footer ---------- */
-  footer{padding:36px 0;border-top:1px solid var(--line);}
-  .foot-row{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--sage);flex-wrap:wrap;gap:12px;}
-  .foot-row a{color:var(--green-deep);font-weight:600;}
-  .foot-social{display:flex;gap:14px;}
-  .foot-social a{
-    width:42px;height:42px;border-radius:50%;
-    display:flex;align-items:center;justify-content:center;
-    text-decoration:none;
-    transition:transform .2s ease, opacity .2s ease;
-  }
-  .foot-social a:hover{transform:translateY(-2px);opacity:0.88;}
-  .social-fb{background:#1877F2;}
-  .social-ig{background:radial-gradient(circle at 30% 110%, #FDF497 0%, #FDF497 5%, #FD5949 45%, #D6249F 60%, #285AEB 90%);}
-  .social-ou{background:#00A87E;width:auto;height:34px;padding:0 14px;border-radius:17px;}
-
-  @media (max-width:920px){
-    nav.links{display:none;}
-    .menu-btn{display:block;}
-    .steps-grid{grid-template-columns:1fr;}
-    .submit-grid{grid-template-columns:1fr;gap:40px;}
-  }
-  @media (max-width:560px){
-    .nav{padding:14px 20px;}
-    .wrap{padding:0 20px;}
-    h1{font-size:2rem;}
-  }
-  a:focus-visible, button:focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
+:root{
+--green-deep:#102A43;
+--green-mid:#1B3A63;
+--cream:#FFFFFF;
+--gold:#3D7DC9;
+--ink:#13202E;
+--sand:#EEF3F9;
+--sage:#7C8CA0;
+--line: rgba(16,42,67,0.12);
+--radius: 2px;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+margin:0;
+background:var(--cream);
+color:var(--ink);
+font-family:'Inter',sans-serif;
+-webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none;}
+img{max-width:100%;display:block;}
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px;}
+/* ---------- Header ---------- */
+header{
+position:sticky;top:0;z-index:50;
+background:var(--cream);
+border-bottom:1px solid var(--line);
+}
+.nav{
+display:flex;align-items:center;justify-content:space-between;
+padding:18px 28px;
+max-width:1180px;margin:0 auto;
+}
+.brand{display:flex;align-items:center;gap:12px;}
+.brand-mark{
+width:42px;height:42px;border-radius:50%;
+overflow:hidden;flex-shrink:0;
+border:1.5px solid var(--gold);
+}
+.brand-mark img{width:100%;height:100%;object-fit:cover;display:block;}
+.brand-text{font-family:'Fraunces',serif;font-weight:600;font-size:19px;letter-spacing:0.2px;}
+.brand-text span{color:var(--green-mid);font-weight:500;font-size:13px;display:block;letter-spacing:1.5px;text-transform:uppercase;margin-top:-2px;}
+nav.links{display:flex;gap:34px;align-items:center;}
+nav.links a{
+font-size:14px;font-weight:500;color:var(--green-deep);
+position:relative;padding-bottom:4px;
+}
+nav.links a::after{
+content:'';position:absolute;left:0;bottom:0;width:0;height:1.5px;background:var(--gold);
+transition:width .25s ease;
+}
+nav.links a:hover::after{width:100%;}
+nav.links a.current::after{width:100%;}
+.nav-cta{
+background:var(--green-deep);color:var(--cream);
+padding:10px 20px;border-radius:var(--radius);
+font-size:13.5px;font-weight:600;letter-spacing:0.3px;
+border:1px solid var(--green-deep);
+}
+.nav-cta:hover{background:var(--green-mid);}
+.menu-btn{display:none;background:none;border:none;cursor:pointer;color:var(--green-deep);}
+/* ---------- Page hero ---------- */
+.page-hero{padding:64px 0 56px;}
+.eyebrow{
+font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;
+color:var(--gold);letter-spacing:2px;text-transform:uppercase;
+margin-bottom:18px;
+}
+h1{
+font-family:'Fraunces',serif;font-weight:600;
+font-size:clamp(2.2rem, 4vw, 3.2rem);
+line-height:1.05;letter-spacing:-0.5px;
+margin:0 0 20px;color:var(--green-deep);
+}
+h1 em{font-style:italic;font-weight:500;color:var(--gold);}
+.page-hero p.lede{font-size:17px;line-height:1.65;color:#3a423d;max-width:600px;margin:0;}
+/* ---------- How it works ---------- */
+.steps-section{padding:20px 0 70px;}
+.steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;}
+.step-card{
+background:var(--sand);border:1px solid var(--line);border-radius:6px;
+padding:30px 26px;
+}
+.step-num{
+font-family:'JetBrains Mono',monospace;font-weight:700;font-size:13px;
+color:var(--gold);letter-spacing:1px;margin-bottom:14px;
+}
+.step-card h3{
+font-family:'Fraunces',serif;font-weight:600;font-size:19px;
+margin:0 0 10px;color:var(--green-deep);
+}
+.step-card p{font-size:14.5px;line-height:1.55;color:#3a423d;margin:0;}
+/* ---------- Submission section ---------- */
+.submit-section{background:var(--green-deep);color:var(--cream);padding:80px 0;}
+.submit-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;}
+.submit-section h2{
+font-family:'Fraunces',serif;font-weight:600;font-size:clamp(1.8rem,3vw,2.4rem);
+margin:0 0 18px;
+}
+.submit-section p{color:rgba(255,255,255,0.75);line-height:1.65;font-size:15.5px;max-width:440px;}
+.info-list{list-style:none;padding:0;margin:28px 0 0;display:flex;flex-direction:column;gap:14px;}
+.info-list li{display:flex;gap:10px;align-items:flex-start;font-size:14.5px;color:rgba(255,255,255,0.85);}
+.info-list li::before{content:'✓';color:var(--gold);font-weight:700;flex-shrink:0;}
+.submit-card{
+background:var(--cream);color:var(--ink);
+border-radius:6px;padding:36px 32px;
+}
+.submit-card h3{
+font-family:'Fraunces',serif;font-weight:600;font-size:21px;
+margin:0 0 8px;color:var(--green-deep);
+}
+.submit-card p.sub{font-size:14px;color:var(--sage);margin:0 0 26px;line-height:1.5;}
+.field-group{margin-bottom:18px;}
+.field-group label{
+display:block;font-family:'JetBrains Mono',monospace;font-size:11px;
+letter-spacing:1px;text-transform:uppercase;color:var(--sage);margin-bottom:6px;
+}
+.field-group input, .field-group textarea{
+width:100%;padding:11px 13px;border:1px solid var(--line);border-radius:3px;
+font-family:'Inter',sans-serif;font-size:14.5px;color:var(--ink);
+background:var(--sand);
+}
+.field-group input:focus, .field-group textarea:focus{
+outline:2px solid var(--gold);outline-offset:1px;background:var(--cream);
+}
+.field-group textarea{resize:vertical;min-height:80px;}
+.submit-actions{display:flex;flex-direction:column;gap:12px;margin-top:24px;}
+.btn{
+display:flex;align-items:center;justify-content:center;gap:9px;
+padding:15px 26px;border-radius:var(--radius);
+font-size:14.5px;font-weight:600;letter-spacing:0.2px;
+border:1.5px solid var(--green-deep);cursor:pointer;width:100%;
+}
+.btn-primary{background:var(--green-deep);color:var(--cream);}
+.btn-primary:hover{background:var(--green-mid);}
+.btn-gold{background:var(--gold);border-color:var(--gold);color:var(--cream);}
+.btn-gold:hover{background:#2F66A3;}
+.attach-note{
+display:flex;gap:10px;align-items:flex-start;margin-top:20px;
+padding:14px;background:var(--sand);border-radius:4px;
+font-size:12.5px;color:var(--green-deep);line-height:1.5;
+}
+/* ---------- Footer ---------- */
+footer{padding:36px 0;border-top:1px solid var(--line);}
+.foot-row{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--sage);flex-wrap:wrap;gap:12px;}
+.foot-row a{color:var(--green-deep);font-weight:600;}
+.foot-social{display:flex;gap:14px;}
+.foot-social a{
+width:42px;height:42px;border-radius:50%;
+display:flex;align-items:center;justify-content:center;
+text-decoration:none;
+transition:transform .2s ease, opacity .2s ease;
+}
+.foot-social a:hover{transform:translateY(-2px);opacity:0.88;}
+.social-fb{background:#1877F2;}
+.social-ig{background:radial-gradient(circle at 30% 110%, #FDF497 0%, #FDF497 5%, #FD5949 45%, #D6249F 60%, #285AEB 90%);}
+.social-ou{background:#00A87E;width:auto;height:34px;padding:0 14px;border-radius:17px;}
+@media (max-width:920px){
+nav.links{display:none;}
+.menu-btn{display:block;}
+.steps-grid{grid-template-columns:1fr;}
+.submit-grid{grid-template-columns:1fr;gap:40px;}
+}
+@media (max-width:560px){
+.nav{padding:14px 20px;}
+.wrap{padding:0 20px;}
+h1{font-size:2rem;}
+}
+a:focus-visible, button:focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
 </style>
 </head>
 <body>
-
 <header>
-  <div class="nav">
-    <a href="index.html" class="brand">
-      <div class="brand-mark"><img src="images/logo-header.png" alt="ReSwing Miami logo"></div>
-      <div class="brand-text">ReSwing<span>Miami Golf</span></div>
-    </a>
-    <nav class="links">
-      <a href="index.html">Home</a>
-      <a href="inventory.html">Inventory</a>
-      <a href="trade-in.html" class="current">Trade In</a>
-      <a href="index.html#visit">Visit</a>
-    </nav>
-    <a href="inventory.html" class="nav-cta">Browse Inventory</a>
-    <button class="menu-btn" aria-label="Menu">☰</button>
-  </div>
+<div class="nav">
+<a href="index.html" class="brand">
+<div class="brand-mark"><img src="images/logo-header.png" alt="ReSwing Miami logo"></div>
+<div class="brand-text">ReSwing<span>Miami Golf</span></div>
+</a>
+<nav class="links">
+<a href="index.html">Home</a>
+<a href="inventory.html">Inventory</a>
+<a href="trade-in.html" class="current">Trade In</a>
+<a href="index.html#trust">Reviews</a>
+<a href="index.html#visit">Visit</a>
+</nav>
+<a href="inventory.html" class="nav-cta">Browse Inventory</a>
+<button class="menu-btn" aria-label="Menu">☰</button>
+</div>
 </header>
-
 <section class="page-hero">
-  <div class="wrap">
-    <div class="eyebrow">Trade In</div>
-    <h1>Get value from <em>your old clubs.</em></h1>
-    <p class="lede">Upgrading your set or stepping away from the game? Send us a few photos and we'll give you a fair, no pressure offer. No appointment needed to get started.</p>
-  </div>
+<div class="wrap">
+<div class="eyebrow">Trade In</div>
+<h1>Get value from <em>your old clubs.</em></h1>
+<p class="lede">Upgrading your set or stepping away from the game? Send us a few photos and we'll give you a fair, no pressure offer. No appointment needed to get started.</p>
+</div>
 </section>
-
 <section class="steps-section">
-  <div class="wrap">
-    <div class="steps-grid">
-      <div class="step-card">
-        <div class="step-num">STEP 01</div>
-        <h3>Snap a few photos</h3>
-        <p>Take clear photos of the clubhead, shaft, and grip. Note the brand, model, and any damage you're aware of.</p>
-      </div>
-      <div class="step-card">
-        <div class="step-num">STEP 02</div>
-        <h3>Send them our way</h3>
-        <p>Text or email the photos along with your name and a quick description. We usually reply the same day.</p>
-      </div>
-      <div class="step-card">
-        <div class="step-num">STEP 03</div>
-        <h3>Get your offer</h3>
-        <p>We'll give you a fair cash or trade credit offer toward anything in our inventory. No obligation either way.</p>
-      </div>
-    </div>
-  </div>
+<div class="wrap">
+<div class="steps-grid">
+<div class="step-card">
+<div class="step-num">STEP 01</div>
+<h3>Snap a few photos</h3>
+<p>Take clear photos of the clubhead, shaft, and grip. Note the brand, model, and any damage you're aware of.</p>
+</div>
+<div class="step-card">
+<div class="step-num">STEP 02</div>
+<h3>Send them our way</h3>
+<p>Text or email the photos along with your name and a quick description. We usually reply the same day.</p>
+</div>
+<div class="step-card">
+<div class="step-num">STEP 03</div>
+<h3>Get your offer</h3>
+<p>We'll give you a fair cash or trade credit offer toward anything in our inventory. No obligation either way.</p>
+</div>
+</div>
+</div>
 </section>
-
 <section class="submit-section" id="submit">
-  <div class="wrap submit-grid">
-    <div>
-      <h2>Send us your clubs.</h2>
-      <p>We accept drivers, irons, wedges, putters, full sets, and bags in any condition. If it's golf equipment, we want to see it.</p>
-      <ul class="info-list">
-        <li>Fair offers based on real market value, not lowball guesses</li>
-        <li>Cash or trade credit toward anything in our inventory</li>
-        <li>No obligation. You're free to walk away from any offer</li>
-        <li>Most offers sent back within 24 hours</li>
-      </ul>
-    </div>
-
-    <div class="submit-card">
-      <h3>Tell us what you've got</h3>
-      <p class="sub">Fill in a few details, then attach your photos in the Messages or Mail app when it opens.</p>
-
-      <div class="field-group">
-        <label for="ti-name">Name</label>
-        <input type="text" id="ti-name" placeholder="Your name">
-      </div>
-      <div class="field-group">
-        <label for="ti-clubs">What are you trading in?</label>
-        <input type="text" id="ti-clubs" placeholder="e.g. TaylorMade iron set, Titleist driver">
-      </div>
-      <div class="field-group">
-        <label for="ti-notes">Condition notes</label>
-        <textarea id="ti-notes" placeholder="Any scratches, dents, or wear worth mentioning?"></textarea>
-      </div>
-
-      <div class="submit-actions">
-        <a href="#" id="textBtn" class="btn btn-gold">Text Photos to (786) 238-6733</a>
-        <a href="#" id="emailBtn" class="btn btn-primary">Email Photos to reswingmiami@gmail.com</a>
-      </div>
-    </div>
-  </div>
+<div class="wrap submit-grid">
+<div>
+<h2>Send us your clubs.</h2>
+<p>We accept drivers, irons, wedges, putters, full sets, and bags in any condition. If it's golf equipment, we want to see it.</p>
+<ul class="info-list">
+<li>Fair offers based on real market value, not lowball guesses</li>
+<li>Cash or trade credit toward anything in our inventory</li>
+<li>No obligation. You're free to walk away from any offer</li>
+<li>Most offers sent back within 24 hours</li>
+</ul>
+</div>
+<div class="submit-card">
+<h3>Tell us what you've got</h3>
+<p class="sub">Fill in a few details, then attach your photos in the Messages or Mail app when it opens.</p>
+<div class="field-group">
+<label for="ti-name">Name</label>
+<input type="text" id="ti-name" placeholder="Your name">
+</div>
+<div class="field-group">
+<label for="ti-clubs">What are you trading in?</label>
+<input type="text" id="ti-clubs" placeholder="e.g. TaylorMade iron set, Titleist driver">
+</div>
+<div class="field-group">
+<label for="ti-notes">Condition notes</label>
+<textarea id="ti-notes" placeholder="Any scratches, dents, or wear worth mentioning?"></textarea>
+</div>
+<div class="submit-actions">
+<a href="#" id="textBtn" class="btn btn-gold">Text Photos to (786) 238-6733</a>
+<a href="#" id="emailBtn" class="btn btn-primary">Email Photos to reswingmiami@gmail.com</a>
+</div>
+</div>
+</div>
 </section>
-
 <footer>
-  <div class="wrap foot-row">
-    <span>© 2026 ReSwing Miami Golf. All clubs sold as is unless noted.</span>
-    <div class="foot-social">
-      <a href="https://www.facebook.com/marketplace/profile/100081661029800/" target="_blank" rel="noopener" aria-label="Facebook" class="social-fb">
-        <svg viewBox="0 0 24 24" width="18" height="18" fill="#FFFFFF"><path d="M22 12.06C22 6.51 17.52 2 12 2S2 6.51 2 12.06c0 5 3.66 9.13 8.44 9.88v-6.99H7.9v-2.89h2.54V9.84c0-2.5 1.49-3.89 3.78-3.89 1.09 0 2.23.2 2.23.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.45 2.89h-2.33V21.94C18.34 21.19 22 17.06 22 12.06Z"/></svg>
-      </a>
-      <a href="https://www.instagram.com/reswingmiami" target="_blank" rel="noopener" aria-label="Instagram" class="social-ig">
-        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#FFFFFF" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.6" r="1" fill="#FFFFFF" stroke="none"/></svg>
-      </a>
-      <a href="https://offerup.co/profile/reswingmiami" target="_blank" rel="noopener" aria-label="OfferUp" class="social-ou">
-        <span style="font-family:Arial,sans-serif;font-weight:700;font-size:11.5px;color:#FFFFFF;letter-spacing:-0.2px;white-space:nowrap;">OfferUp</span>
-      </a>
-    </div>
-    <a href="inventory.html">Shop inventory →</a>
-  </div>
+<div class="wrap foot-row">
+<span>© 2026 ReSwing Miami Golf. All clubs sold as is unless noted.</span>
+<div class="foot-social">
+<a href="https://www.facebook.com/marketplace/profile/100081661029800/" target="_blank" rel="noopener" aria-label="Facebook" class="social-fb">
+<svg viewBox="0 0 24 24" width="18" height="18" fill="#FFFFFF"><path d="M22 12.06C22 6.51 17.52 2 12 2S2 6.51 2 12.06c0 5 3.66 9.13 8.44 9.88v-6.99H7.9v-2.89h2.54V9.84c0-2.5 1.49-3.89 3.78-3.89 1.09 0 2.23.2 2.23.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.45 2.89h-2.33V21.94C18.34 21.19 22 17.06 22 12.06Z"/></svg>
+</a>
+<a href="https://www.instagram.com/reswingmiami" target="_blank" rel="noopener" aria-label="Instagram" class="social-ig">
+<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#FFFFFF" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.6" r="1" fill="#FFFFFF" stroke="none"/></svg>
+</a>
+<a href="https://offerup.co/profile/reswingmiami" target="_blank" rel="noopener" aria-label="OfferUp" class="social-ou">
+<span style="font-family:Arial,sans-serif;font-weight:700;font-size:11.5px;color:#FFFFFF;letter-spacing:-0.2px;white-space:nowrap;">OfferUp</span>
+</a>
+</div>
+<a href="inventory.html">Shop inventory →</a>
+</div>
 </footer>
-
 <script>
-  function buildMessage(){
-    const name = document.getElementById('ti-name').value.trim();
-    const clubs = document.getElementById('ti-clubs').value.trim();
-    const notes = document.getElementById('ti-notes').value.trim();
-    let msg = "Hi, I'd like a trade-in offer.\n";
-    if(name) msg += "Name: " + name + "\n";
-    if(clubs) msg += "Clubs: " + clubs + "\n";
-    if(notes) msg += "Notes: " + notes + "\n";
-    msg += "(Photos attached)";
-    return msg;
-  }
-
-  document.getElementById('textBtn').addEventListener('click', function(e){
-    e.preventDefault();
-    const msg = encodeURIComponent(buildMessage());
-    window.location.href = "sms:+17862386733?&body=" + msg;
-  });
-
-  document.getElementById('emailBtn').addEventListener('click', function(e){
-    e.preventDefault();
-    const subject = encodeURIComponent("Trade In Inquiry");
-    const body = encodeURIComponent(buildMessage());
-    window.location.href = "mailto:reswingmiami@gmail.com?subject=" + subject + "&body=" + body;
-  });
+function buildMessage(){
+const name = document.getElementById('ti-name').value.trim();
+const clubs = document.getElementById('ti-clubs').value.trim();
+const notes = document.getElementById('ti-notes').value.trim();
+let msg = "Hi, I'd like a trade-in offer.\n";
+if(name) msg += "Name: " + name + "\n";
+if(clubs) msg += "Clubs: " + clubs + "\n";
+if(notes) msg += "Notes: " + notes + "\n";
+msg += "(Photos attached)";
+return msg;
+}
+document.getElementById('textBtn').addEventListener('click', function(e){
+e.preventDefault();
+const msg = encodeURIComponent(buildMessage());
+window.location.href = "sms:+17862386733?&body=" + msg;
+});
+document.getElementById('emailBtn').addEventListener('click', function(e){
+e.preventDefault();
+const subject = encodeURIComponent("Trade In Inquiry");
+const body = encodeURIComponent(buildMessage());
+window.location.href = "mailto:reswingmiami@gmail.com?subject=" + subject + "&body=" + body;
+});
 </script>
-
 </body>
 </html>
