@@ -75,6 +75,33 @@ border:1px solid var(--green-deep);
 }
 .nav-cta:hover{background:var(--green-mid);}
 .menu-btn{display:none;background:none;border:none;cursor:pointer;color:var(--green-deep);}
+.mobile-menu{
+display:none;
+position:absolute;
+top:100%;left:0;right:0;
+background:var(--cream);
+border-bottom:1px solid var(--line);
+flex-direction:column;
+padding:6px 28px 18px;
+z-index:49;
+box-shadow:0 14px 24px -16px rgba(16,42,67,0.25);
+}
+.mobile-menu.open{display:flex;}
+.mobile-menu a{
+padding:13px 0;
+font-size:15px;font-weight:500;
+color:var(--green-deep);
+border-bottom:1px solid var(--line);
+}
+.mobile-menu a:last-of-type{border-bottom:none;}
+.mobile-menu .mobile-cta{
+margin-top:12px;
+text-align:center;
+background:var(--green-deep);color:var(--cream);
+padding:12px 0;border-radius:var(--radius);
+font-size:14px;font-weight:600;
+border:none;
+}
 /* ---------- Hero ---------- */
 .hero{
 padding:64px 0 0;
@@ -349,16 +376,20 @@ footer{padding:36px 0;border-top:1px solid var(--line);}
 nav.links{display:none;}
 .menu-btn{display:block;}
 .hero-top{grid-template-columns:1fr;gap:40px;}
-.hero-carousel{aspect-ratio:16/10;}
-.sell-slide-inner{padding:8% 8%;}
-.sell-headline{font-size:1.6rem;}
-.sell-sub{font-size:14px;margin-bottom:16px;}
-.sell-tags{margin-bottom:18px;}
+.sell-slide-inner{padding:8% 13%;}
+.carousel-arrow{width:28px;height:28px;}
+.carousel-arrow-prev{left:6px;}
+.carousel-arrow-next{right:6px;}
+.sell-eyebrow{margin-bottom:6px;}
+.sell-headline{font-size:1.5rem;}
+.sell-sub{font-size:13.5px;margin-bottom:6px;}
+.sell-tags{margin-bottom:12px;}
 .sell-tags span{font-size:10.5px;padding:6px 11px;}
 .sell-cta{padding:12px 18px;font-size:13.5px;}
 .sell-deco{display:none;}
 .regrip-deco{display:none;}
-.grip-photo{width:110px;bottom:5%;right:5%;}
+.grip-photo{width:30%;max-width:110px;bottom:4%;right:5%;}
+#sellSlide .grip-photo{width:30%;max-width:110px;bottom:4%;right:5%;}
 #regripSlide .sell-headline{font-size:1.25rem;}
 #regripSlide .sell-slide-inner{padding:7% 8%;}
 .grid{grid-template-columns:repeat(2,1fr);}
@@ -411,7 +442,15 @@ a:focus-visible, button:focus-visible{outline:2px solid var(--gold);outline-offs
 <a href="#visit">Visit</a>
 </nav>
 <a href="inventory.html" class="nav-cta">Browse Inventory</a>
-<button class="menu-btn" aria-label="Menu">☰</button>
+<button class="menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false">☰</button>
+</div>
+<div class="mobile-menu" id="mobileMenu">
+<a href="index.html">Home</a>
+<a href="inventory.html">Inventory</a>
+<a href="trade-in.html">Trade In</a>
+<a href="#trust">Reviews</a>
+<a href="#visit">Visit</a>
+<a href="inventory.html" class="mobile-cta">Browse Inventory</a>
 </div>
 </header>
 <section class="hero">
@@ -428,16 +467,19 @@ a:focus-visible, button:focus-visible{outline:2px solid var(--gold);outline-offs
 <div class="hero-carousel" id="heroCarousel">
 <div class="carousel-slide active" id="sellSlide">
 <svg class="sell-deco" viewBox="0 0 200 200" width="170" height="170">
-<g opacity="0.16" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-<path d="M70 180 L70 40"/>
-<path d="M70 40 C 75 35, 85 35, 88 42 C 90 48, 84 52, 78 50"/>
-<path d="M88 178 L100 38"/>
-<ellipse cx="103" cy="36" rx="7" ry="11" transform="rotate(18 103 36)"/>
-<path d="M106 178 L130 50"/>
-<path d="M130 50 L150 42 L142 60 Z"/>
-<path d="M40 180 L160 180" stroke-width="3"/>
-<rect x="55" y="120" width="40" height="60" rx="8"/>
+<ellipse cx="85" cy="182" rx="36" ry="6" fill="#FFFFFF" opacity="0.10"/>
+<path d="M58,182 L58,118 C58,107 66,99 77,98 L93,98 C104,99 112,107 112,118 L112,182 Z" fill="#FFFFFF" opacity="0.18"/>
+<rect x="58" y="146" width="54" height="13" fill="#0A1F33" opacity="0.22"/>
+<g stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" opacity="0.22">
+<path d="M70,99 L56,34"/>
+<path d="M83,98 L81,26"/>
+<path d="M96,98 L109,31"/>
+<path d="M105,100 L129,44"/>
 </g>
+<ellipse cx="56" cy="31" rx="7" ry="10" fill="#FFFFFF" opacity="0.22" transform="rotate(-10 56 31)"/>
+<ellipse cx="81" cy="23" rx="7" ry="10" fill="#FFFFFF" opacity="0.22"/>
+<ellipse cx="109" cy="28" rx="7" ry="10" fill="#FFFFFF" opacity="0.22" transform="rotate(12 109 28)"/>
+<ellipse cx="129" cy="41" rx="7" ry="10" fill="#FFFFFF" opacity="0.22" transform="rotate(20 129 41)"/>
 </svg>
 <div class="grip-photo">
 <img src="images/products/clubs-bag.png" alt="Golf bag with full set of irons, hybrids, and a putter">
@@ -462,12 +504,16 @@ Contact (786) 238-6733
 </div>
 <div class="carousel-slide" id="regripSlide">
 <svg class="regrip-deco" viewBox="0 0 200 200" width="150" height="150">
-<g opacity="0.22" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-<rect x="90" y="14" width="20" height="46" rx="8"/>
-<path d="M100 60 L100 146"/>
-<path d="M100 146 L110 160"/>
-<path d="M110 160 L158 151 L166 169 C 152 181, 132 189, 114 193 L99 180 Z"/>
-</g>
+<ellipse cx="100" cy="190" rx="28" ry="5" fill="#FFFFFF" opacity="0.10"/>
+<path d="M78,124 Q100,113 122,124 L104,146 L104,186 L96,186 L96,146 Z" fill="#FFFFFF" opacity="0.20"/>
+<circle cx="100" cy="90" r="36" fill="#FFFFFF" opacity="0.20"/>
+<circle cx="86" cy="76" r="2.8" fill="#0A1F33" opacity="0.4"/>
+<circle cx="104" cy="70" r="2.8" fill="#0A1F33" opacity="0.4"/>
+<circle cx="118" cy="84" r="2.8" fill="#0A1F33" opacity="0.4"/>
+<circle cx="90" cy="96" r="2.8" fill="#0A1F33" opacity="0.4"/>
+<circle cx="108" cy="100" r="2.8" fill="#0A1F33" opacity="0.4"/>
+<circle cx="120" cy="98" r="2.8" fill="#0A1F33" opacity="0.4"/>
+<circle cx="100" cy="108" r="2.8" fill="#0A1F33" opacity="0.4"/>
 </svg>
 <div class="grip-photo">
 <img src="images/products/golf-pride-grips.png" alt="Assortment of Golf Pride golf club grips in multiple colors">
@@ -679,6 +725,21 @@ diff < 0 ? next() : prev();
 });
 carousel.addEventListener('mouseleave', () => { isDragging = false; });
 resetTimer();
+})();
+(function(){
+const menuBtn = document.getElementById('menuBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+if(!menuBtn || !mobileMenu) return;
+menuBtn.addEventListener('click', function(){
+const isOpen = mobileMenu.classList.toggle('open');
+menuBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+});
+mobileMenu.querySelectorAll('a').forEach(function(link){
+link.addEventListener('click', function(){
+mobileMenu.classList.remove('open');
+menuBtn.setAttribute('aria-expanded', 'false');
+});
+});
 })();
 </script>
 </body>
